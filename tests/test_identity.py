@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import tempfile
 import unittest
 
 
@@ -12,9 +13,9 @@ OTHER = "other@example.invalid"
 
 class IdentityTest(unittest.TestCase):
     def setUp(self):
-        self.root = ROOT / ".worktrees" / "identity-tests" / self._testMethodName
-        self.root.mkdir(parents=True)
-        self.addCleanup(shutil.rmtree, self.root)
+        temporary = tempfile.TemporaryDirectory(prefix="identity-", dir=ROOT)
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name)
         self.repo = self.root / "repo"
         self.repo.mkdir()
         self.env = {
