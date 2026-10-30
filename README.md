@@ -23,14 +23,6 @@ Some of the files allow separate hooks for machine-specific settings:
 - `~/.config/shell/local.zsh` for `.zshrc`
 - `~/.config/git/local` for git
 
-## Per-clone Git setup
-
-I've set up some git hooks to make sure I use my private GitHub account,
-even if I'm working from a device associated with a work account.
-
-If you want to clone this repo and reuse it, delete the `.githooks` folder or
-replace the email address in `.githooks/identity-check.py` with your own.
-
 ## Installation with Stow
 
 From this checkout, preview application of the packages:
@@ -40,3 +32,15 @@ From this checkout, preview application of the packages:
 To apply everything:
 
     stow --dir="$PWD" --target="$HOME" --no-folding fzf git kitty shell tmux zsh
+
+## Per-clone Git setup
+
+I've set up git commit and push hooks to ensure that I only use my private
+GitHub account when working from a device associated with a work account.
+
+To make git use the `.githooks` folder as its source of hooks:
+
+    git config core.hooksPath .githooks
+
+If you want to reuse this repo and use the hooks, replace the email address in
+`.githooks/identity-check.py` with your own.
