@@ -1,7 +1,6 @@
 __pycache__/
 *.py[cod]
 .worktrees/
-.superpowers/
 .env
 local.env
 local.zsh
