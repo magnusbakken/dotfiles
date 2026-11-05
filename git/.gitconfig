@@ -3,7 +3,11 @@
 	autocrlf = input
 [init]
 	defaultBranch = main
+[pull]
+	ff = only
 [push]
 	autoSetupRemote = true
+[rerere]
+	enabled = true
 [include]
 	path = ~/.config/git/local
