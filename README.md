@@ -33,6 +33,17 @@ To apply everything:
 
     stow --dir="$PWD" --target="$HOME" --no-folding fzf git kitty shell tmux zsh
 
+## Claude window status
+
+After applying the `tmux` package with Stow, merge the hook entries from
+`~/.config/tmux/claude-hooks.json` into `~/.claude/settings.json`, preserving
+unrelated settings and hooks. Reload tmux with prefix + `r`, then start a new
+Claude session normally; no extra launch arguments are needed.
+
+Active and inactive window tabs show `[RUN]`, `[WAIT]`, or `[DONE]`. State is
+shared by all Claude panes in a window: the last hook wins, including clearing
+the indicator when a session ends. Focusing a window does not clear `[DONE]`.
+
 ## Per-clone Git setup
 
 I've set up git commit and push hooks to ensure that I only use my private
