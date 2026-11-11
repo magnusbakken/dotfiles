@@ -1,0 +1,71 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"${TMUX:-}\" ] && [ -n \"${TMUX_PANE:-}\" ]; then tmux run-shell -t \"$TMUX_PANE\" 'TMUX_PANE=\"#{pane_id}\" \"$TMUX_AGENT_INDICATOR_DIR/scripts/agent-state.sh\" --agent claude --state running'; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"${TMUX:-}\" ] && [ -n \"${TMUX_PANE:-}\" ]; then tmux run-shell -t \"$TMUX_PANE\" 'TMUX_PANE=\"#{pane_id}\" \"$TMUX_AGENT_INDICATOR_DIR/scripts/agent-state.sh\" --agent claude --state needs-input'; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"${TMUX:-}\" ] && [ -n \"${TMUX_PANE:-}\" ]; then tmux run-shell -t \"$TMUX_PANE\" 'TMUX_PANE=\"#{pane_id}\" \"$TMUX_AGENT_INDICATOR_DIR/scripts/agent-state.sh\" --agent claude --state needs-input'; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"${TMUX:-}\" ] && [ -n \"${TMUX_PANE:-}\" ]; then tmux run-shell -t \"$TMUX_PANE\" 'TMUX_PANE=\"#{pane_id}\" \"$TMUX_AGENT_INDICATOR_DIR/scripts/agent-state.sh\" --agent claude --state running'; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"${TMUX:-}\" ] && [ -n \"${TMUX_PANE:-}\" ]; then tmux run-shell -t \"$TMUX_PANE\" 'TMUX_PANE=\"#{pane_id}\" \"$TMUX_AGENT_INDICATOR_DIR/scripts/agent-state.sh\" --agent claude --state done'; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"${TMUX:-}\" ] && [ -n \"${TMUX_PANE:-}\" ]; then tmux run-shell -t \"$TMUX_PANE\" 'TMUX_PANE=\"#{pane_id}\" \"$TMUX_AGENT_INDICATOR_DIR/scripts/agent-state.sh\" --agent claude --state off'; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
