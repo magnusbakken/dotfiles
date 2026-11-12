@@ -40,9 +40,9 @@ After applying the `tmux` package with Stow, merge the hook entries from
 unrelated settings and hooks. Reload tmux with prefix + `r`, then start a new
 Claude session normally; no extra launch arguments are needed.
 
-Active and inactive window tabs show `[RUN]`, `[WAIT]`, or `[DONE]`. State is
-shared by all Claude panes in a window: the last hook wins, including clearing
-the indicator when a session ends. Focusing a window does not clear `[DONE]`.
+Active and inactive Catppuccin window tabs show bold `⟳` (working),
+`⏸` (waiting), or `✔` (done) beside the window name, using the theme's sky,
+yellow, and green colors. The background color of the tab also changes.
 
 ## Per-clone Git setup
 
