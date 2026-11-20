@@ -27,11 +27,11 @@ Some of the files allow separate hooks for machine-specific settings:
 
 From this checkout, preview application of the packages:
 
-    stow --dir="$PWD" --target="$HOME" --no-folding --simulate --verbose fzf git kitty shell tmux zsh
+    stow --dir="$PWD" --target="$HOME" --no-folding --simulate --verbose fzf git kitty shell tmux tmux-service zsh
 
 To apply everything:
 
-    stow --dir="$PWD" --target="$HOME" --no-folding fzf git kitty shell tmux zsh
+    stow --dir="$PWD" --target="$HOME" --no-folding fzf git kitty shell tmux tmux-service zsh
 
 ## Claude window status
 
