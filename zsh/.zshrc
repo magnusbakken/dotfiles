@@ -78,3 +78,5 @@ export NVM_DIR="$HOME/.nvm"
 if [ -f "$HOME/.config/shell/local.zsh" ]; then
     . "$HOME/.config/shell/local.zsh"
 fi
+
+eval "$(direnv hook zsh)"
